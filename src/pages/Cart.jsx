@@ -1,74 +1,78 @@
-import React from 'react'
-import Header from '../components/Header'
-import { Link } from 'react-router-dom'
-import { Container, Row, Col, Table, Button, FormControl, Card } from "react-bootstrap";
-
+import React from 'react';
+import Header from '../components/Header';
+import { Link } from 'react-router-dom';
 
 const Cart = () => {
   return (
     <>
       <Header />
-      <Container style={{ paddingTop: '100px' }}>
-      <h1 className="fw-bold text-primary">Cart Summary</h1>
-      <Row className="mt-4">
-        {/* Cart Items Section */}
-        <Col md={8}>
-          <Card className="shadow border p-4">
-            <Table striped bordered hover responsive>
-              <thead>
-                <tr>
-                  <th>#</th>
-                  <th>Name</th>
-                  <th>Image</th>
-                  <th>Quantity</th>
-                  <th>Price</th>
-                  <th>Action</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td>1</td>
-                  <td>Title</td>
-                  <td>
-                    <img src="" alt="Product" height="70px" width="70px" />
-                  </td>
-                  <td>
-                    <div className="d-flex align-items-center">
-                      <Button variant="outline-secondary" size="sm" className="fw-bold">-</Button>
-                      <FormControl type="text" className="mx-2 text-center" style={{ width: '40px' }}/>
-                      <Button variant="outline-secondary" size="sm" className="fw-bold">+</Button>
-                    </div>
-                  </td>
-                  <td>$5</td>
-                  <td>
-                    <Button variant="danger" size="sm">
-                      <i className="fa-solid fa-trash"></i>
-                    </Button>
-                  </td>
-                </tr>
-              </tbody>
-            </Table>
-            <div className="d-flex justify-content-end mt-3">
-              <Button variant="danger" className="me-3">Empty Cart</Button>
-              <Link to={'/'} className="btn btn-primary">Shop More</Link>
+      <div className="container mx-auto pt-24 px-4 mb-20">
+        <h1 className="text-2xl font-bold text-blue-600">Cart Summary</h1>
+
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 mt-6">
+          {/* Cart Items Section */}
+          <div className="lg:col-span-2 bg-white shadow-lg rounded-lg p-6">
+            <div className="overflow-x-auto">
+              <table className="w-full border-collapse border border-gray-300">
+                <thead>
+                  <tr className="bg-gray-200">
+                    <th className="border p-2">#</th>
+                    <th className="border p-2">Name</th>
+                    <th className="border p-2">Image</th>
+                    <th className="border p-2">Quantity</th>
+                    <th className="border p-2">Price</th>
+                    <th className="border p-2">Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr className="text-center">
+                    <td className="border p-2">1</td>
+                    <td className="border p-2">Title</td>
+                    <td className="border p-2">
+                      <img src="" alt="Product" className="h-16 w-16 mx-auto" />
+                    </td>
+                    <td className="border p-2">
+                      <div className="flex items-center justify-center">
+                        <button className="bg-gray-300 text-gray-700 px-2 py-1 rounded-l">-</button>
+                        <input type="text" className="w-10 text-center border" value="1" readOnly />
+                        <button className="bg-gray-300 text-gray-700 px-2 py-1 rounded-r">+</button>
+                      </div>
+                    </td>
+                    <td className="border p-2">$5</td>
+                    <td className="border p-2">
+                      <button className="bg-red-500 text-white px-3 py-1 rounded hover:bg-red-600">
+                        <i className="fa-solid fa-trash"></i>
+                      </button>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
             </div>
-          </Card>
-        </Col>
 
-        {/* Total Summary Section */}
-        <Col md={4}>
-          <Card className="shadow border p-4">
-            <h2 className="fw-bold my-3">
-              Total Amount: <span className="text-danger">$5</span>
+            <div className="flex justify-between mt-4">
+              <button className="bg-red-500 text-white px-4 py-2 rounded hover:bg-red-600">
+                Empty Cart
+              </button>
+              <Link to="/" className="bg-blue-600 text-white px-4 py-2 text-decoration-none rounded hover:bg-blue-700">
+                Shop More
+              </Link>
+            </div>
+          </div>
+
+          {/* Total Summary Section */}
+          <div className="bg-white shadow-lg rounded-lg p-6">
+            <h2 className="text-xl font-bold mb-3">
+              Total Amount: <span className="text-red-500">$5</span>
             </h2>
-            <hr />
-            <Button variant="success" className="w-100 mt-3">Check Out</Button>
-          </Card>
-        </Col>
-      </Row>
-    </Container>
+            <hr className="my-3" />
+            <button className="bg-green-600 text-white w-full py-2 rounded-lg hover:bg-green-700">
+              Check Out
+            </button>
+          </div>
+        </div>
+      </div>
     </>
-  )
-}
+  );
+};
 
-export default Cart
+export default Cart;

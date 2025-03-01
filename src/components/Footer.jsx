@@ -1,55 +1,65 @@
-import React from 'react'
-import { Link } from 'react-router-dom'
+import React from 'react';
+import { Link } from 'react-router-dom';
 
 const Footer = () => {
   return (
-    <>
-      {/* <div className='mt-5 w-full p-6 py-8  w-100 bg-primary-600 '> */}
-      <div className='mt-5 w-full p-6 py-8  w-100  rounded shadow ' style={{backgroundColor:'#343a40', color:'white'}}>
-        <div className='d-flex justify-content-between gap-3' style={{marginLeft:'20px'}}>
-          {/* Intro */}
-          <div style={{ width: '400px' }}>
-            <h5><i className="fa-solid fa-truck-fast me-2"></i>
-              E-Cart</h5>
-            <p>Designed and built with all the love in the world by the Luminar team with the help of our contributors.</p>
-            <p>Code licensed MIT, docs CC BY 3.0.</p>
-            <p>Currently v5.3.3.</p>
+    <footer className="bg-gray-900 text-white py-10 px-6 md:px-12">
+      <div className="container  mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+        {/* Intro */}
+        <div>
+          <h5 className="text-lg font-semibold flex items-center">
+            <i className="fa-solid fa-truck-fast mr-2"></i> E-Cart
+          </h5>
+          <p className="text-sm mt-2">
+            Designed and built with love by the Luminar team with the help of our contributors.
+          </p>
+          <p className="text-sm">Code licensed MIT, docs CC BY 3.0.</p>
+          <p className="text-sm">Currently v5.3.3.</p>
+        </div>
+
+        {/* Links */}
+        <div>
+          <h5 className="text-lg font-semibold mb-2">Links</h5>
+          <ul className="space-y-2">
+            <li><Link to={'/men'} className="hover:text-gray-400">Men</Link></li>
+            <li><Link to={'/women'} className="hover:text-gray-400">Women</Link></li>
+            <li><Link to={'/kids'} className="hover:text-gray-400">Kids</Link></li>
+          </ul>
+        </div>
+
+        {/* Guides */}
+        <div>
+          <h5 className="text-lg font-semibold mb-2">Guides</h5>
+          <ul className="space-y-2">
+            <li><a href="https://react.dev/" target="_blank" className="hover:text-gray-400">React</a></li>
+            <li><a href="https://tailwindcss.com/" target="_blank" className="hover:text-gray-400">React Tailwind</a></li>
+            <li><a href="https://reactrouter.com/" target="_blank" className="hover:text-gray-400">React Router</a></li>
+          </ul>
+        </div>
+
+        {/* Contact */}
+        <div>
+          <h5 className="text-lg font-semibold mb-2">Contact</h5>
+          <div className="flex items-center gap-2">
+            <input className="w-full p-2 rounded bg-gray-800 text-white border border-gray-700" type="email" placeholder="Enter your email here" />
+            <button className="bg-violet-600 hover:bg-violet-700 p-2 rounded text-white">
+              <i className="fa-solid fa-arrow-right"></i>
+            </button>
           </div>
-          {/* Links */}
-          <div>
-            <h5>Links</h5>
-            <Link to={'/men'} style={{ textDecoration: 'none', color: 'white',display:'block' }}>Men</Link>
-            <Link to={'/women'} style={{ textDecoration: 'none', color: 'white',display:'block' }}>Women</Link>
-            <Link to={'/kids'} style={{ textDecoration: 'none', color: 'white' }}>Kids</Link>
-          </div>
-          {/* Guides */}
-          <div className="flex flex-col">
-            <h5>Guides</h5>
-            <a style={{ textDecoration: 'none', color: 'white',display:'block' }} href="https://react.dev/" target='_blank'>React</a>
-            <a style={{ textDecoration: 'none', color: 'white',display:'block' }} href="https://tailwindcss.com/" target='_blank'>React Tailwind</a>
-            <a style={{ textDecoration: 'none', color: 'white',display:'block' }} href="https://reactrouter.com/" target='_blank'>React Router</a>
-          </div>
-          {/* Contact */}
-          <div className="flex flex-col">
-            <h5>Contact</h5>
-            <div className="flex">
-              <input className='w-full rounded me-2 p-2' type="email" name="" id="" placeholder='Enter your email here' />
-              <button className='bg-violet rounded p-2'><i className="fa-solid fa-arrow-right"></i></button>
-            </div>
-            <div className="flex justify-between mt-3">
-              <a href="" style={{ textDecoration: 'none', color: 'white' }} target='_blank'><i className="fa-brands fa-twitter"></i></a>
-              <a href="" style={{ textDecoration: 'none', color: 'white' }} target='_blank'><i className="fa-brands fa-instagram"></i></a>
-              <a href="" style={{ textDecoration: 'none', color: 'white' }} target='_blank'><i className="fa-brands fa-facebook"></i></a>
-              <a href="" style={{ textDecoration: 'none', color: 'white' }} target='_blank'><i className="fa-brands fa-linkedin"></i></a>
-              <a href="" style={{ textDecoration: 'none', color: 'white' }} target='_blank'><i class="fa-brands fa-github"></i></a>
-              <a href="" style={{ textDecoration: 'none', color: 'white' }} target='_blank'><i class="fa-solid fa-phone"></i></a>
-            </div>
+          <div className="flex gap-4 mt-4">
+            <a href="#" className="hover:text-gray-400 text-xl"><i className="fa-brands fa-twitter"></i></a>
+            <a href="#" className="hover:text-gray-400 text-xl"><i className="fa-brands fa-instagram"></i></a>
+            <a href="#" className="hover:text-gray-400 text-xl"><i className="fa-brands fa-facebook"></i></a>
+            <a href="#" className="hover:text-gray-400 text-xl"><i className="fa-brands fa-linkedin"></i></a>
+            <a href="#" className="hover:text-gray-400 text-xl"><i className="fa-brands fa-github"></i></a>
+            <a href="#" className="hover:text-gray-400 text-xl"><i className="fa-solid fa-phone"></i></a>
           </div>
         </div>
-        <p className='text-center'>Copyright &copy; 2024</p>
       </div>
-    </>
-  )
-}
 
-export default Footer
+      <p className="text-center text-sm mt-8">Copyright &copy; 2024</p>
+    </footer>
+  );
+};
+
+export default Footer;

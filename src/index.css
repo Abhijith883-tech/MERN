@@ -1,26 +1,8 @@
-*{
-  margin: 0;
+@import "tailwindcss";
+
+* {
+  /* margin: 0;
   padding: 0;
-  box-sizing: border-box;
-  font-family: Georgia, 'Times New Roman', Times, serif;
+  box-sizing: border-box; */
+  font-family: "Poppins", serif;
 }
-/* .nav-link {
-  position: relative;
-  padding-bottom: 5px;
-}
-
-.nav-link::after {
-  content: "";
-  position: absolute;
-  left: 50%;
-  bottom: 0;
-  width: 0;
-  height: 2px;
-  background-color: black;
-  transition: all 0.3s ease-in-out;
-  transform: translateX(-50%);
-}
-
-.nav-link:hover::after {
-  width: "100%";
-} */

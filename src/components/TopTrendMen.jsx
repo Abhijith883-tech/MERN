@@ -6,9 +6,9 @@ import Modal from 'react-bootstrap/Modal';
 import StarMen from './StarMen';
 const TopTrendMen = () => {
     const [show, setShow] = useState(false);
-    
-        const handleClose = () => setShow(false);
-        const handleShow = () => setShow(true);
+
+    const handleClose = () => setShow(false);
+    const handleShow = () => setShow(true);
     return (
         <>
             <div>
@@ -36,21 +36,35 @@ const TopTrendMen = () => {
                     </div></Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
-                    <div className='d-flex justify-content-between'>
-                    Kids TShirt <h5 style={{color:'red'}}>$500</h5>
+                    <div className='d-flex'>
+                        <div>
+                            <img src={carosal} style={{ width: '75%' }} alt="" srcset="" />
+                        </div>
+                        <div>
+                            <img src={carosal} style={{ width: '75%' }} alt="" srcset="" />
+                        </div>
+                        <div>
+                            <img src={carosal} style={{ width: '75%' }} alt="" srcset="" />
+                        </div>
+                        <div>
+                            <img src={carosal} style={{ width: '75%' }} alt="" srcset="" />
+                        </div>
                     </div>
-                <div className='d-flex justify-content-between'>
-                <p>Mens</p>
-                <p>Brands</p>
-                </div>
-                <StarMen rating={4.5}/>
+                    <div className='d-flex justify-content-between'>
+                        Kids TShirt <h5 style={{ color: 'red' }}>$500</h5>
+                    </div>
+                    <div className='d-flex justify-content-between'>
+                        <p>Mens</p>
+                        <p>Brands</p>
+                    </div>
+                    <StarMen rating={4.5} />
                 </Modal.Body>
                 <Modal.Footer className='d-flex justify-content-between'>
                     <Button variant="secondary" onClick={handleClose}>
                         Close
                     </Button>
                     <Button variant="primary" onClick={handleClose}>
-                    Add to cart
+                        Add to cart
                     </Button>
                 </Modal.Footer>
             </Modal>

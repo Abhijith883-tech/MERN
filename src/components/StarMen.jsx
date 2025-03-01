@@ -17,8 +17,8 @@ const StarMen = ({ rating = 0 }) => {  // Default rating to 0 if not provided
               rating >= starValue
                 ? faStar
                 : rating >= starValue - 0.5
-                ? faStarHalfStroke
-                : faStarEmpty
+                  ? faStarHalfStroke
+                  : faStarEmpty
             }
             style={{ color: "#FFD700", marginRight: "5px" }}
           />
