@@ -53,7 +53,7 @@ const MenCard = () => {
                         </div>
                     </div>
                     <div className='d-flex justify-content-between'>
-                        Kids TShirt <h5 style={{ color: 'red' }}>$500</h5>
+                        Kidss TShirt <h5 style={{ color: 'red' }}>$500</h5>
                     </div>
                     <div className='d-flex justify-content-between'>
                         <p>Mens</p>
