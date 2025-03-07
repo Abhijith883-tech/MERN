@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect,useState } from 'react'
 import Header from '../components/Header'
 
 import { Carousel } from "react-bootstrap";
@@ -6,8 +6,28 @@ import "bootstrap/dist/css/bootstrap.min.css";
 
 import MenCard from '../components/MenCard';
 import TopTrendMen from '../components/TopTrendMen';
+import { getMenProductsAPI } from '../services/allAPI';
 
 const Men = () => {
+      const [products, setProducts] = useState([]);
+  
+  useEffect(() => {
+          const fetchProducts = async () => {
+              try {
+                  const result = await getMenProductsAPI();
+                  console.log(result); // This will log the API response
+                  if (result.status==200) {
+                    setProducts(result.data)
+                  } else {
+                    console.error("Failed to fetch products:", result);
+
+                  }
+              } catch (error) {
+                  console.error("Error fetching products:", error);
+              }
+          };
+          fetchProducts();
+      }, []);
   return (
     <>
       <Header />
@@ -73,14 +93,17 @@ const Men = () => {
       <h2 style={{ marginLeft: '60px', marginTop: '50px' }}>Trending Collection</h2>
       <div style={{ marginLeft: '60px', backgroundColor: 'red', width: '280px', height: '10px', borderRadius: '10px' }}></div>
       <div className='d-flex flex-wrap'>
-        <MenCard />
-        <MenCard />
-        <MenCard />
-        <MenCard />
-        <MenCard />
-        <MenCard />
-        <MenCard />
-        <MenCard />
+
+        {products.length>0?(
+          products.map((product)=>(
+            <MenCard key={product._id} product={product} />
+          ))
+        ):(
+          <p>{products.length === 0 ? "No products found." : "Loading products..."}</p>
+        )
+      }
+            
+              
 
       </div>
     </>

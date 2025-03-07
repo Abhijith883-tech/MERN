@@ -47,6 +47,7 @@ function App() {
         <Route path="/admin/sidebar" element={<SideBar />} />
         <Route path="/admin/men" element={<AdminMen />} />
         <Route path="/admin/men/add" element={<AdminMenAdd />} />
+        <Route path="/admin/men/edit/:id" element={<AdminMenAdd />} />
         <Route path="/admin/women" element={<AdminWomen />} />
         <Route path="/admin/women/add" element={<AdminWomenAdd />} />
         <Route path="/admin/kids" element={<AdminKid />} />

@@ -1,8 +1,43 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import Header from '../components/Header';
 import { Link } from 'react-router-dom';
+import { getCartAPI } from '../services/allAPI';
 
 const Cart = () => {
+
+  const [cartProducts,setcartProducts]=useState([])
+  console.log(cartProducts);
+  
+
+  useEffect(() => {
+    const getCart = async () => {
+      try {
+        const userId = sessionStorage.getItem("user"); // Make sure userId is stored correctly
+
+        const uId=JSON.parse(userId)
+        // console.log(uId);
+        // console.log(uId._id);
+        
+        
+        const result = await getCartAPI(uId._id);
+        // console.log(result.data[0].products)
+        setcartProducts(result.data[0].products)
+        console.log(result.data[0].products[0]);
+        // console.log(result);
+        // console.log(result.data);
+        
+        
+      } catch (error) {
+        console.error("Error fetching cart:", error);
+      }
+    };
+  
+    getCart();
+  }, []);
+  
+  
+  
+
   return (
     <>
       <Header />
@@ -25,11 +60,18 @@ const Cart = () => {
                   </tr>
                 </thead>
                 <tbody>
-                  <tr className="text-center">
-                    <td className="border p-2">1</td>
-                    <td className="border p-2">Title</td>
+                  {
+                    cartProducts.length>0?(
+                      cartProducts.map((product,index)=>(
+                        <tr className="text-center">
+                    <td className="border p-2">{index+1}</td>
+                    <td className="border p-2">{product.name}</td>
+                    
+
+
+
                     <td className="border p-2">
-                      <img src="" alt="Product" className="h-16 w-16 mx-auto" />
+                      <img src={product.image} alt="Product" className="h-16 w-16 mx-auto" />
                     </td>
                     <td className="border p-2">
                       <div className="flex items-center justify-center">
@@ -38,13 +80,20 @@ const Cart = () => {
                         <button className="bg-gray-300 text-gray-700 px-2 py-1 rounded-r">+</button>
                       </div>
                     </td>
-                    <td className="border p-2">$5</td>
+                    <td className="border p-2">${product.price}</td>
                     <td className="border p-2">
                       <button className="bg-red-500 text-white px-3 py-1 rounded hover:bg-red-600">
                         <i className="fa-solid fa-trash"></i>
                       </button>
                     </td>
                   </tr>
+                      ))
+                    ):(
+                      <tr>
+                        <td>No items in the cart</td>
+                      </tr>
+                    )
+                  }
                 </tbody>
               </table>
             </div>
