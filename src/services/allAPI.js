@@ -18,9 +18,40 @@ export const menAPI = async (reqBody) => {
   return await commonAPI("POST", `${SERVERURL}/admin/men/add`, reqBody);
 }
 
+export const womenAPI = async (reqBody) => {
+  return await commonAPI("POST", `${SERVERURL}/admin/women/add`, reqBody);
+}
+
+export const kidAPI = async (reqBody) => {
+  return await commonAPI("POST", `${SERVERURL}/admin/kid/add`, reqBody);
+}
+
+
+export const specialAPI = async (reqBody) => {
+  return await commonAPI("POST", `${SERVERURL}/admin/special/add`, reqBody);
+};
+
+export const getSpecialAPI = async (reqBody) => {
+  return await commonAPI("GET", `${SERVERURL}/admin/special`, reqBody);
+};
+
+
+
 export const getMenProductsAPI = async () => {
   return await commonAPI("GET", `${SERVERURL}/admin/men`);
 };
+
+export const getWomenProductsAPI = async () => {
+  return await commonAPI("GET", `${SERVERURL}/admin/women`);
+};
+
+export const getKidProductsAPI = async () => {
+  return await commonAPI("GET", `${SERVERURL}/admin/kid`);
+};
+
+// export const getSpecialAPI = async () => {
+//   return await commonAPI("GET", `${SERVERURL}/admin/kid`);
+// };
 
 
 export const deleteMenProductAPI = async (id) => {
@@ -38,3 +69,12 @@ export const addToCartAPI = async (cartData) => {
 export const getCartAPI = async (userId) => {
   return await commonAPI("GET", `${SERVERURL}/cart/${userId}`);
 };
+
+export const deleteAllCartItemsAPI = async (userId) => {
+  return await commonAPI("DELETE", `${SERVERURL}/empty-cart/${userId}`);
+};
+
+export const deleteCartItemAPI = async (userId, productId) => {
+  return await commonAPI("DELETE", `${SERVERURL}/cart/${userId}/product/${productId}`);
+};
+

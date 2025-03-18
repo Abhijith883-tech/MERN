@@ -23,6 +23,8 @@ import AdminKid from './pages/AdminKid'
 import AdminKidsAdd from './pages/AdminKidsAdd'
 import Others from './pages/Others'
 import Dashboard from './pages/Dashboard'
+import AdminDashboard from './pages/AdminDashboard';
+import AdminSpecial from './pages/AdminSpecial';
 
 function App() {
   return (
@@ -45,15 +47,18 @@ function App() {
         
         {/* Admin Routes */}
         <Route path="/admin/sidebar" element={<SideBar />} />
+        <Route path="/admin/dashboard" element={<AdminDashboard />} />
         <Route path="/admin/men" element={<AdminMen />} />
         <Route path="/admin/men/add" element={<AdminMenAdd />} />
         <Route path="/admin/men/edit/:id" element={<AdminMenAdd />} />
         <Route path="/admin/women" element={<AdminWomen />} />
         <Route path="/admin/women/add" element={<AdminWomenAdd />} />
+        <Route path="/admin/women/edit/:id" element={<AdminWomenAdd />} />
         <Route path="/admin/kids" element={<AdminKid />} />
         <Route path="/admin/kids/add" element={<AdminKidsAdd />} />
+        <Route path="/admin/kids/edit/:id" element={<AdminKidsAdd />} />
         <Route path="/admin/others" element={<Others />} />
-
+        <Route path="/admin/special/add" element={<AdminSpecial />} />
         {/* 404 Page */}
         <Route path="*" element={<Pnf />} />
       </Routes>

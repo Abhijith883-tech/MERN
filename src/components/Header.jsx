@@ -5,6 +5,10 @@ import AvatharProfile from '../assets/AvatharProfile.jpg'
 import { Link } from "react-router-dom";
 import Profile from "./Profile";
 const Header = ({ insideLogin, Login  }) => {
+  const userId = sessionStorage.getItem("user");
+    const userId1 = JSON.parse(userId)
+    console.log(userId1);
+    
   // console.log(insideLogin);
   
   // State for hover effects
@@ -15,6 +19,7 @@ const Header = ({ insideLogin, Login  }) => {
   const handleMouseLeave = () => setHovered(null);
 
   return (
+    
     <Navbar expand="lg" className=" text-white p-3" style={{ backgroundColor: '#343a40', color: 'white' }}>
       <Container>
         {/* Logo */}
@@ -80,7 +85,7 @@ const Header = ({ insideLogin, Login  }) => {
                   </Link>
                 </div>
           }
-          <Profile />
+          <Profile userId1={userId1}/>
         </Form>
       </Container>
     </Navbar>

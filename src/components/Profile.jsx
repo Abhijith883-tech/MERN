@@ -3,7 +3,7 @@ import AvatharProfile from "../assets/AvatharProfile.jpg";
 import { Button } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 
-const Profile = ({ insideProfile }) => {
+const Profile = ({ insideProfile,userId1 }) => {
   console.log(insideProfile);
   
   const [showInfo, setShowInfo] = useState(false);
@@ -37,11 +37,11 @@ const Profile = ({ insideProfile }) => {
               height="100" 
               className="rounded-circle mb-2  ms-15 " 
             />
-            <h5 className="text-black">Abhijith</h5>
-            <p className="text-muted">Address: [Your Address]</p>
-            <p className="text-muted">Email: [Your Email]</p>
-            <p className="text-muted">Phone: [Your Phone]</p>
-            <p className="text-muted">Password: ******</p>
+            <h5 className="text-black">{userId1.username}</h5>
+            <p className="text-muted">Address: {userId1.address}</p>
+            <p className="text-muted">Email: {userId1.emailaddress}</p>
+            <p className="text-muted">Phone: {userId1.phonenumber}</p>
+            <p className="text-muted">Password: {userId1.password}</p>
             
             <Link to='/profileEdit'><Button className="w-100 btn-primary my-2">Edit</Button></Link>
             <Link className="text-danger text-decoration-none d-block">Logout</Link>

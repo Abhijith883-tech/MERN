@@ -127,6 +127,8 @@ import StarMen from './StarMen';
 import { addToCartAPI } from '../services/allAPI';
 
 const MenCard = ({ product }) => {
+    const userId = sessionStorage.getItem("user");
+    const userId1=JSON.parse(userId)._id
     console.log(product);
 
     const [show, setShow] = useState(false);
@@ -137,8 +139,7 @@ const MenCard = ({ product }) => {
     const addToCart = async () => {
 
         const cartData = {
-
-            userId: "67c604a473ecdc841c9f542e", // Replace with dynamic user ID
+            userId:userId1 ,
             productId: product._id,
             name: product.name,
             price: product.price,
@@ -162,7 +163,9 @@ const MenCard = ({ product }) => {
     
 
     return (
+        
         <>
+        
             <div style={{ marginLeft: '13px' }}>
                 <div style={{ height: '380px', width: '300px', marginTop: '50px', marginLeft: '50px' }} className="bg-white text-dark p-3 rounded shadow">
                     <div style={{

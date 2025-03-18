@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import menfasion from '../assets/menfasion.png'
 import sssss from '../assets/sssss.png'
 import hats from '../assets/hats.png'
@@ -6,9 +6,32 @@ import { Button, Carousel, Container } from 'react-bootstrap'
 import Header from '../components/Header'
 import { FaArrowRight } from "react-icons/fa";
 import carosal from '../assets/carosal.jpg'
+import { getSpecialAPI } from '../services/allAPI'
 
 
 const Dashboard = () => {
+  const [products, setProducts] = useState([]);
+  console.log(products);
+
+  useEffect(() => {
+    const fetchProducts = async () => {
+      try {
+        const result = await getSpecialAPI()
+        // console.log(result.data);
+        if (result.status === 200) {
+          setProducts(result.data)
+        } else {
+
+        }
+
+      } catch (error) {
+        console.error("Error fetching products:", error);
+
+      }
+    }
+    fetchProducts()
+  }, [])
+
   return (
     <>
       <div>
@@ -200,38 +223,49 @@ const Dashboard = () => {
 
         {/* Best Offers Section */}
         <h3 className="text-center mt-3">Best Offers So Far</h3>
-        <div className='d-flex'>
-          <div className="bg-white text-dark p-3 rounded shadow position-relative" style={{ width: "300px", margin: "50px auto" }}>
-            {/* Discount Badge */}
-            <div
-              className="position-absolute bg-danger text-white rounded-circle text-center d-flex align-items-center justify-content-center"
-              style={{
-                width: "45px",
-                height: "45px",
-                fontSize: "14px",
-                fontWeight: "bold",
-                top: "10px",
-                left: "10px",
-              }}
-            >
-              20% OFF
-            </div>
-            {/* Image */}
-            <img src={carosal} style={{ width: "100%" }} alt="Offer" />
+        <div className='ml-36 d-flex flex-wrap gap-3'>
+          
+        {
+            products.length > 0 ? (
+              products.map((product) => (
+                <div className="bg-white text-dark p-3 rounded shadow position-relative" style={{ width: "300px", margin: "50px auto" }}>
+                  {/* Discount Badge */}
+                  <div
+                    className="position-absolute bg-danger text-white rounded-circle text-center d-flex align-items-center justify-content-center"
+                    style={{
+                      width: "45px",
+                      height: "45px",
+                      fontSize: "14px",
+                      fontWeight: "bold",
+                      top: "10px",
+                      left: "10px",
+                    }}
+                  >
+                    {product.discount}% OFF
+                  </div>
+                  {/* Image */}
+                  <img src={product.mainImage} style={{ width: "100%" }} alt="Offer" />
 
-            {/* Product Details */}
-            <div>
-              <h3>Kids T-Shirt</h3>
-              <div className="d-flex justify-content-between">
-                <p className="mb-0">Mens</p>
-                <p className="mb-0">Brands</p>
-              </div>
-              <h5><span>$500</span>$420</h5>
-            </div>
-            <div className='d-flex justify-content-center align-items-center'>
-              <Button className='bg-black text-white border-0'>Add to cart</Button>
-            </div>
-          </div>
+                  {/* Product Details */}
+                  <div>
+                    <h3>{product.name}</h3>
+                    <div className="d-flex justify-content-between">
+                      <p className="mb-0">{product.gender}</p>
+                      <p className="mb-0">{product.brand}</p>
+                    </div>
+                    <h5><span><s>${product.price}</s></span>${product.specialPrice}</h5>
+                  </div>
+                  <div className='d-flex justify-content-center align-items-center'>
+                    <Button className='bg-black text-white border-0'>Add to cart</Button>
+                  </div>
+                </div>
+              ))
+            ): (
+              <p>No top trending products found.</p>
+            )
+          }
+              
+              
 
         </div>
       </div>

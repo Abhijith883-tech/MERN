@@ -258,6 +258,8 @@ const AdminMenAdd = () => {
             if (id) {
                 // Update existing product
                 const result = await editMenProductAPI(id, { ...inputMen, stock: stockNumber });
+                console.log(result);
+                
                 if (result.status === 200) {
                     alert(`Product ${result.data.product.name} successfully updated`);
                     navigate('/admin/men');

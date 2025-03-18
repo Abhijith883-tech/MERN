@@ -3,7 +3,7 @@ import carosal from '../assets/carosal.jpg'
 import { Button } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
 
-const AdminKidCard = () => {
+const AdminKidCard = ({product,onDelete}) => {
     const [hover, setHover] = useState(false);
     return (
         <>
@@ -44,15 +44,15 @@ const AdminKidCard = () => {
                 className="bg-white text-dark p-3 rounded shadow position-relative"
             >
                 <div>
-                    <img src={carosal} style={{ width: '100%' }} alt="Kids T-Shirt" />
+                    <img src={product?.mainImage} style={{ width: '100%' }} alt="Kids T-Shirt" />
                 </div>
                 <div>
-                    <h3>Kids T-Shirt</h3>
+                    <h3>{product?.name}</h3>
                     <div className="d-flex justify-content-between">
-                        <p className="mb-0">Kid</p>
-                        <p className="mb-0">Brands</p>
+                        <p className="mb-0">{product?.gender}</p>
+                        <p className="mb-0">{product?.brand}</p>
                     </div>
-                    <h5>$500</h5>
+                    <h5>${product?.price}</h5>
                 </div>
                 <div className="d-flex justify-content-between">
                     <Button
@@ -60,7 +60,7 @@ const AdminKidCard = () => {
                         className="text-white border-0"
                     >
                         <Link
-                            to="/AdminKidsAdd"
+                            to={`/admin/kids/edit/${product._id}`}
                             className="text-decoration-none text-white d-inline-block w-100 h-100"
                         >
                             Edit
@@ -69,6 +69,7 @@ const AdminKidCard = () => {
                     <Button
                         style={{ width: '70px', height: '35px' }}
                         className="bg-danger text-white border-0 ms-2"
+                        onClick={() => onDelete(product._id)}
                     >
                         Delete
                     </Button>
