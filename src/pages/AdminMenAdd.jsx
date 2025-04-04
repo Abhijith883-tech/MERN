@@ -224,10 +224,10 @@ const AdminMenAdd = () => {
     const { id } = useParams(); // Get product ID from URL (for editing)
 
     const [inputMen, setMen] = useState({
-        name: "", gender: "Men", brand: "", price: "", mainImage: "", 
-        Image1: "", Image2: "", Image3: "", Image4: "", stock: ""
+        name: "", gender: "Men", brand: "", price: "", mainImage: "",
+        Image1: "", Image2: "", Image3: "", Image4: "", stock: "", typeDress: ""
     });
-
+    console.log(inputMen);
     useEffect(() => {
         // If there's an ID, fetch product data for editing
         if (id) {
@@ -259,7 +259,7 @@ const AdminMenAdd = () => {
                 // Update existing product
                 const result = await editMenProductAPI(id, { ...inputMen, stock: stockNumber });
                 console.log(result);
-                
+
                 if (result.status === 200) {
                     alert(`Product ${result.data.product.name} successfully updated`);
                     navigate('/admin/men');
@@ -269,7 +269,7 @@ const AdminMenAdd = () => {
                 const result = await menAPI({ ...inputMen, stock: stockNumber });
                 if (result.status === 201) {
                     alert(`Product ${result.data.product.name} successfully added`);
-                    setMen({ name: "", gender: "Men", brand: "", price: "", mainImage: "", Image1: "", Image2: "", Image3: "", Image4: "", stock: "" });
+                    setMen({ name: "", gender: "Men", brand: "", price: "", mainImage: "", Image1: "", Image2: "", Image3: "", Image4: "", stock: "", typeDress: "" });
                     navigate('/admin/men');
                 }
             }
@@ -287,6 +287,14 @@ const AdminMenAdd = () => {
                         <Form.Group className="mb-3">
                             <Form.Label>Name</Form.Label>
                             <Form.Control value={inputMen.name} onChange={e => setMen({ ...inputMen, name: e.target.value })} type="text" placeholder="Enter Name" />
+                        </Form.Group>
+                        <Form.Group className="mb-3">
+                            <Form.Label>Dress Type</Form.Label>
+                            <div>
+                                <Form.Check inline label="Shirt" type="radio" name="typeDress" value="Shirt" checked={inputMen.typeDress === "Shirt"} onChange={e => setMen({ ...inputMen, typeDress: e.target.value })} />
+                                <Form.Check inline label="Pant" type="radio" name="typeDress" value="Pant" checked={inputMen.typeDress === "Pant"} onChange={e => setMen({ ...inputMen, typeDress: e.target.value })} />
+                                <Form.Check inline label="Shoes" type="radio" name="typeDress" value="Shoes" checked={inputMen.typeDress === "Shoes"} onChange={e => setMen({ ...inputMen, typeDress: e.target.value })} />
+                            </div>
                         </Form.Group>
                     </Stack>
 
@@ -336,7 +344,7 @@ const AdminMenAdd = () => {
                     <Stack direction='horizontal' gap={3}>
                         <Form.Group className="mb-3">
                             <Form.Label>Stock Count</Form.Label>
-                            <Form.Control  value={inputMen.stock} onChange={e => setMen({ ...inputMen, stock: e.target.value })} type="number" placeholder="Stock Count" min="0" />
+                            <Form.Control value={inputMen.stock} onChange={e => setMen({ ...inputMen, stock: e.target.value })} type="number" placeholder="Stock Count" min="0" />
                         </Form.Group>
                     </Stack>
 

@@ -1,6 +1,7 @@
+
 import React, { useEffect, useState } from 'react'
 import { Container, Form, Button, Card, Stack } from 'react-bootstrap';
-import { getKidProductsAPI, kidAPI } from '../services/allAPI';
+import { getMenProductsAPI, editMenProductAPI, menAPI, womenAPI, getWomenProductsAPI } from '../services/allAPI';
 import { useNavigate, useParams } from 'react-router-dom';
 
 const AdminKidsAdd = () => {
@@ -9,27 +10,26 @@ const AdminKidsAdd = () => {
 
     const [inputMen, setMen] = useState({
         name: "", gender: "Kid", brand: "", price: "", mainImage: "",
-        Image1: "", Image2: "", Image3: "", Image4: "", stock: ""
+        Image1: "", Image2: "", Image3: "", Image4: "", stock: "", typeDress: ""
     });
-    // console.log(inputMen);
-
+    console.log(inputMen);
     useEffect(() => {
+        // If there's an ID, fetch product data for editing
         if (id) {
             const fetchProduct = async () => {
                 try {
-                    const result = await getKidProductsAPI(); // Fetch all products
+                    const result = await getWomenProductsAPI(); // Fetch all products
                     console.log(result);
-                    const product = result.data.find(p => p._id == id)
-                    console.log(product);
-                    if (product) setMen(product); // Set the form data with product details
 
+                    const product = result.data.find(p => p._id === id); // Find the product by ID
+                    if (product) setMen(product); // Set the form data with product details
                 } catch (error) {
                     console.error("Error fetching product details:", error);
                 }
-            }
-            fetchProduct()
+            };
+            fetchProduct();
         }
-    }, [id])
+    }, [id]);
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -40,6 +40,7 @@ const AdminKidsAdd = () => {
             alert("Stock must be a non-negative number!");
             return;
         }
+
         try {
             if (id) {
                 // Update existing product
@@ -47,35 +48,41 @@ const AdminKidsAdd = () => {
                 console.log(result);
                 if (result.status === 200) {
                     alert(`Product ${result.data.product.name} successfully updated`);
-                    navigate('/admin/men');
+                    navigate('/admin/women');
                 }
             } else {
                 // Add new product
-                const result = await kidAPI({ ...inputMen, stock: stockNumber });
-                // console.log(result);
+                const result = await womenAPI({ ...inputMen, stock: stockNumber });
 
                 if (result.status === 201) {
                     alert(`Product ${result.data.product.name} successfully added`);
-                    setMen({ name: "", gender: "Women", brand: "", price: "", mainImage: "", Image1: "", Image2: "", Image3: "", Image4: "", stock: "" });
-                    navigate('/admin/kids');
+                    setMen({ name: "", gender: "Kid", brand: "", price: "", mainImage: "", Image1: "", Image2: "", Image3: "", Image4: "", stock: "", typeDress: "" });
+                    navigate('/admin/women');
                 }
             }
         } catch (error) {
             alert('Operation failed');
-
         }
-    }
-
+    };
     return (
         <>
             <Container className="d-flex justify-content-center align-items-center vh-100">
                 <Card style={{ width: '36rem', background: 'rgba(98, 255, 0, 0.9)' }} className="bg-white text-dark p-3 rounded shadow">
-                    <h2 className="text-center mb-4">Add Women Product</h2>
+                    <h2 className="text-center mb-4">{id ? "Edit Kid Product" : "Add Kid Product"}</h2>
                     <Form onSubmit={handleSubmit}>
                         <Stack direction='horizontal' gap={3}>
                             <Form.Group className="mb-3">
                                 <Form.Label>Name</Form.Label>
                                 <Form.Control value={inputMen.name} onChange={e => setMen({ ...inputMen, name: e.target.value })} type="text" placeholder="Enter Name" />
+                            </Form.Group>
+                            <Form.Group className="mb-3">
+                                <Form.Label>Dress Type</Form.Label>
+                                <div>
+                                    <Form.Check inline label="Shirt" type="radio" name="typeDress" value="Shirt" checked={inputMen.typeDress === "Shirt"} onChange={e => setMen({ ...inputMen, typeDress: e.target.value })} />
+                                    <Form.Check inline label="Pant" type="radio" name="typeDress" value="Pant" checked={inputMen.typeDress === "Pant"} onChange={e => setMen({ ...inputMen, typeDress: e.target.value })} />
+                                    <Form.Check inline label="Shoes" type="radio" name="typeDress" value="Shoes" checked={inputMen.typeDress === "Shoes"} onChange={e => setMen({ ...inputMen, typeDress: e.target.value })} />
+                                    <Form.Check inline label="Top" type="radio" name="typeDress" value="Top" checked={inputMen.typeDress === "Top"} onChange={e => setMen({ ...inputMen, typeDress: e.target.value })} />
+                                </div>
                             </Form.Group>
                         </Stack>
 
@@ -130,7 +137,7 @@ const AdminKidsAdd = () => {
                         </Stack>
 
                         <Button type="submit" className="w-100">
-                            Add Product
+                            {id ? "Update Product" : "Add Product"}
                         </Button>
                     </Form>
                 </Card>

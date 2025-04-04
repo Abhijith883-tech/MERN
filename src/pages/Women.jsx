@@ -16,12 +16,15 @@ import { getWomenProductsAPI } from '../services/allAPI';
 const Women = () => {
   const [products, setProducts] = useState([]);
   const [topTrendProducts, setTopTrendProducts] = useState([]);
+  const [selectedCategory, setSelectedCategory] = useState(""); // State for category selection
+// console.log(products);
 
   useEffect(() => {
     const fetchProducts = async () => {
       try {
         const result = await getWomenProductsAPI();
         console.log(result); // This will log the API response
+        
         if (result.status == 200) {
           // setProducts(result.data)
           const filteredProducts = result.data.filter(product => product.price > 3000);
@@ -40,6 +43,22 @@ const Women = () => {
     };
     fetchProducts();
   }, []);
+
+  // Function to handle category change
+  const handleCategoryChange = (event) => {
+    setSelectedCategory(event.target.value);
+    // console.log(event.target.value);
+
+  };
+
+  // Filter products based on selected category
+  const filteredTopTrendProducts = selectedCategory
+    ? topTrendProducts.filter(product => product.typeDress === selectedCategory)
+    : topTrendProducts;
+
+  const filteredProducts = selectedCategory
+    ? products.filter(product => product.typeDress === selectedCategory)
+    : products;
   return (
     <>
       <Header />
@@ -93,11 +112,24 @@ const Women = () => {
         </Carousel.Item>
       </Carousel>
       <h2 style={{ marginLeft: '80px', marginTop: '50px' }}>Top Brands Collection</h2>
-      <div style={{ marginLeft: '80px', backgroundColor: 'red', width: '315px', height: '10px', borderRadius: '10px' }}></div>
+      <div className='d-flex justify-content-between align-items-center p-3'>
+        <div style={{ marginLeft: '80px', backgroundColor: 'red', width: '315px', height: '10px', borderRadius: '10px' }}>
+        </div>
 
+        <div>
+          <label htmlFor="items">Choose an item: </label>
+          <select name="category" id="category" value={selectedCategory} onChange={handleCategoryChange}>
+            <option value="">All</option>
+            <option value="Shirt">Shirt</option>
+            <option value="Pant">Pant</option>
+            <option value="Shoes">Shoes</option>
+            <option value="Top">Top</option>
+          </select>
+        </div>
+      </div>
       <div className='d-flex flex-wrap'>
-        {topTrendProducts.length > 0 ? (
-          topTrendProducts.map((product) => (
+        {filteredTopTrendProducts.length > 0 ? (
+          filteredTopTrendProducts.map((product) => (
             <TopTrendWomen key={product._id} product={product} />
           ))
         ) : (
@@ -108,12 +140,12 @@ const Women = () => {
       <div style={{ marginLeft: '60px', backgroundColor: 'red', width: '280px', height: '10px', borderRadius: '10px' }}></div>
       <div className='d-flex flex-wrap'>
 
-        {products.length > 0 ? (
-          products.map((product) => (
+        {filteredProducts.length > 0 ? (
+          filteredProducts.map((product) => (
             <WomenCard key={product._id} product={product} />
           ))
         ) : (
-          <p>{products.length === 0 ? "No products found." : "Loading products..."}</p>
+          <p>{filteredProducts.length === 0 ? "No products found." : "Loading products..."}</p>
         )
         }
 

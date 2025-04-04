@@ -41,6 +41,7 @@ const Kids = () => {
     }
     fetchProducts()
   }, [])
+  
   return (
     <>
       <Header />

@@ -49,11 +49,6 @@ export const getKidProductsAPI = async () => {
   return await commonAPI("GET", `${SERVERURL}/admin/kid`);
 };
 
-// export const getSpecialAPI = async () => {
-//   return await commonAPI("GET", `${SERVERURL}/admin/kid`);
-// };
-
-
 export const deleteMenProductAPI = async (id) => {
   return await commonAPI("DELETE", `${SERVERURL}/admin/men/${id}`);
 };
@@ -64,6 +59,10 @@ export const editMenProductAPI = async (id, updatedData) => {
 
 export const addToCartAPI = async (cartData) => {
   return await commonAPI("POST", `${SERVERURL}/add`, cartData);
+};
+
+export const addToCartSpecialAPI = async (cartData) => {
+  return await commonAPI("POST", `${SERVERURL}/specail`, cartData);
 };
 
 export const getCartAPI = async (userId) => {
@@ -78,3 +77,83 @@ export const deleteCartItemAPI = async (userId, productId) => {
   return await commonAPI("DELETE", `${SERVERURL}/cart/${userId}/product/${productId}`);
 };
 
+export const NikeAPI = async () => {
+  return await commonAPI("GET", `${SERVERURL}/nike`);
+};
+
+export const LeviAPI = async () => {
+  return await commonAPI("GET", `${SERVERURL}/levi`);
+};
+
+export const ZaraAPI = async () => {
+  return await commonAPI("GET", `${SERVERURL}/zara`);
+};
+
+export const AsosAPI = async () => {
+  return await commonAPI("GET", `${SERVERURL}/asos`);
+};
+
+export const PridaAPI = async () => {
+  return await commonAPI("GET", `${SERVERURL}/prida`);
+};
+
+export const MenCountAPI = async () => {
+  return await commonAPI("GET", `${SERVERURL}/count/men`);
+};
+
+export const WomenCountAPI = async () => {
+  return await commonAPI("GET", `${SERVERURL}/count/women`);
+};
+
+export const KidCountAPI = async () => {
+  return await commonAPI("GET", `${SERVERURL}/count/kid`);
+};
+
+export const UserCountAPI = async () => {
+  return await commonAPI("GET", `${SERVERURL}/count/user`);
+};
+
+
+export const PayAPI = async (cartProducts) => {
+  const formattedProducts = cartProducts.map((p) => ({
+      name: p.name,
+      price: p.price,
+      quantity: p.quantity
+  }));
+
+  try {
+      const response = await commonAPI(
+          "POST",
+          "http://localhost:3000/create-checkout-session", 
+          { products: formattedProducts },
+          { "Content-Type": "application/json" }
+      );
+
+      console.log("API Response:", response.data);
+      if (response.data.url) {
+          window.location.href = response.data.url; // Redirect to Stripe
+      } else {
+          console.error("Payment initiation failed:", response.data);
+      }
+  } catch (error) {
+      console.error("Payment API Error:", error.response?.data || error);
+  }
+};
+
+
+export const ClearCartAPI = async () => {
+  return await commonAPI("DELETE", `${SERVERURL}/clear-cart`);
+};
+
+// export const LogeOutAPI = async () => {
+//   return await commonAPI("GET", `${SERVERURL}/logout`);
+// };
+
+
+export const LogeOutAPI = async () => {
+  const token = sessionStorage.getItem("token"); // Retrieve the token from sessionStorage
+
+  return await commonAPI("GET", `${SERVERURL}/logout`, {}, {
+    Authorization: `Bearer ${token}`
+  });
+};

@@ -2,15 +2,17 @@ import React, { useState } from "react";
 import { Navbar, Nav, Form, FormControl, Button, Container } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
 import AvatharProfile from '../assets/AvatharProfile.jpg'
+import logo from '../assets/logo.png'
 import { Link } from "react-router-dom";
 import Profile from "./Profile";
-const Header = ({ insideLogin, Login  }) => {
+import { color } from "chart.js/helpers";
+const Header = ({ insideLogin, Login }) => {
   const userId = sessionStorage.getItem("user");
-    const userId1 = JSON.parse(userId)
-    console.log(userId1);
-    
+  const userId1 = JSON.parse(userId)
+  console.log(userId1);
+
   // console.log(insideLogin);
-  
+
   // State for hover effects
   const [hovered, setHovered] = useState(null);
 
@@ -19,12 +21,12 @@ const Header = ({ insideLogin, Login  }) => {
   const handleMouseLeave = () => setHovered(null);
 
   return (
-    
+
     <Navbar expand="lg" className=" text-white p-3" style={{ backgroundColor: '#343a40', color: 'white' }}>
       <Container>
         {/* Logo */}
         <Navbar.Brand href="/">
-          <img src="logo.png" alt="Logo" width="100" height="auto" />
+        <i className="fa-solid fa-truck-fast mr-2" style={{color:'white'}}></i> 
         </Navbar.Brand>
 
         {/* Navigation Links */}
@@ -78,14 +80,15 @@ const Header = ({ insideLogin, Login  }) => {
                 :
 
                 <div className="d-flex align-items-center">
-                  <input className="w-full rounded me-2 p-2" type="text" placeholder="search" />
-                  <Button variant="outline-light" className="me-3">Search</Button>
+                  <div>
+                    
+                  </div>
                   <Link to={'/cart'}>
                     <i style={{ color: 'white' }} className="fa-solid fa-cart-plus fa-lg"></i>
                   </Link>
                 </div>
           }
-          <Profile userId1={userId1}/>
+          <Profile userId1={userId1} />
         </Form>
       </Container>
     </Navbar>

@@ -25,6 +25,7 @@ import Others from './pages/Others'
 import Dashboard from './pages/Dashboard'
 import AdminDashboard from './pages/AdminDashboard';
 import AdminSpecial from './pages/AdminSpecial';
+import Brands from './pages/Brands';
 
 function App() {
   return (
@@ -35,10 +36,12 @@ function App() {
         <Route path="/login" element={<Auth />} />
         <Route path="/register" element={<Auth insideRegister={true}/>} />
         {/* <Route path="/register" element={<Register />} /> */}
+        
         <Route path="/dashboard" element={<Dashboard />} />
         <Route path="/cart" element={<Cart />} />
         <Route path="/forgotePassword" element={<ForgotePassword />} />
         <Route path="/kids" element={<Kids />} />
+        <Route path="/brand/:brand" element={<Brands />} />
         <Route path="/men" element={<Men />} />
         <Route path="/wishlist" element={<Wishlist />} />
         <Route path="/women" element={<Women />} />
