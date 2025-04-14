@@ -33,7 +33,7 @@ const Footer = () => {
           justify-content: center;
       }
           .list{
-          margin-left: 10px;
+          margin-left: -5px;
       }
           .contact{
           margin-left: -42px;
@@ -69,7 +69,7 @@ const Footer = () => {
 
           <div className='list'>
             <h5>Links</h5>
-            <ul>
+            <ul className="space-y-2">
               <li><Link to={'/men'}>Men</Link></li>
               <li><Link to={'/women'}>Women</Link></li>
               <li><Link to={'/kids'}>Kids</Link></li>
