@@ -147,18 +147,16 @@ const Dashboard = () => {
           <Carousel.Item>
             <Container
               fluid
-              className="min-vh-100 bg-gray-300 d-flex justify-evenly align-items-center p-4"
-            // style={{
-            //   background: "linear-gradient(135deg, #6a11cb, #2575fc, #ff758c)", // Blue gradient
-            // }}
+              className="min-vh-100 bg-gray-300 d-flex flex-column-reverse flex-lg-row justify-evenly align-items-center p-4"
             >
-              <div className="d-flex flex-column justify-content-center bg-teal-500 rounded-tr-4xl rounded-bl-4xl shadow-2xl p-10 align-items-center text-center w-auto">
+              {/* Text Block */}
+              <div className="d-flex flex-column justify-content-center bg-teal-500 rounded-tr-4xl rounded-bl-4xl shadow-2xl p-4 p-lg-5 align-items-center text-center w-100 w-lg-auto mt-4 mt-lg-0">
                 <h1 className="text-teal-500">
                   Classic Elegance: <br /> Dress to Impress
                 </h1>
                 <Button
                   style={{
-                    backgroundColor: "#FF5733", // Bright Orange
+                    backgroundColor: "#FF5733",
                     color: "white",
                     border: "none",
                     padding: "10px 20px",
@@ -176,20 +174,31 @@ const Dashboard = () => {
                   Explore Now <FaArrowRight />
                 </Button>
               </div>
-              <img src={hats} alt="Men Fashion" className="img-fluid bg-teal-500 rounded-full " />
+
+              {/* Image Block */}
+              <div className="w-100 w-lg-auto d-flex justify-content-center">
+                <img
+                  src={hats}
+                  alt="Men Fashion"
+                  className="img-fluid bg-teal-500 rounded-circle"
+                  style={{ maxWidth: "300px" }}
+                />
+              </div>
             </Container>
           </Carousel.Item>
+
 
           {/* Slide 3 */}
           <Carousel.Item>
             <Container
               fluid
-              className="min-vh-100 d-flex justify-content-between align-items-center p-4"
+              className="min-vh-100 d-flex flex-column-reverse flex-lg-row justify-content-between align-items-center p-4"
               style={{
                 background: "linear-gradient(135deg, #f5e6ca, #f8d7b7)", // Warm sunset gradient
               }}
             >
-              <div className="d-flex flex-column justify-content-center align-items-center text-center w-50">
+              {/* Text Section */}
+              <div className="d-flex flex-column justify-content-center align-items-center text-center w-100 w-lg-50 mt-4 mt-lg-0">
                 <h1 className="text-white">
                   Trendy & Bold: <br /> Express Yourself in Style
                 </h1>
@@ -213,9 +222,14 @@ const Dashboard = () => {
                   Discover More <FaArrowRight />
                 </Button>
               </div>
-              <img src={sssss} alt="Men Fashion" className="img-fluid" />
+
+              {/* Image Section */}
+              <div className="w-100 w-lg-50 d-flex justify-content-center">
+                <img src={sssss} alt="Men Fashion" className="img-fluid" style={{ maxWidth: "100%", height: "auto" }} />
+              </div>
             </Container>
           </Carousel.Item>
+
         </Carousel>
 
         <h3 className="text-center mt-3">Select By Category</h3>
