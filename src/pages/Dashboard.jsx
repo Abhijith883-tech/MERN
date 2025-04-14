@@ -245,11 +245,10 @@ const Dashboard = () => {
 
         <h3 className="text-center mt-3">Select By Category</h3>
         <div className="d-flex justify-content-center mt-3">
-          <div className='d-flex gap-3'>
+          <div className="d-flex flex-wrap gap-3 justify-content-center">
             <div className="shadow d-flex flex-column justify-content-center align-items-center"
               style={{ width: "150px", height: "100px" }}>
               <Link to={`/brand/levi`}>
-
                 <p className="mt-2 mb-0">Levi’s</p>
               </Link>
             </div>
@@ -261,9 +260,6 @@ const Dashboard = () => {
             </div>
             <div className="shadow d-flex flex-column justify-content-center align-items-center"
               style={{ width: "150px", height: "100px" }}>
-              <div className="d-flex">
-
-              </div>
               <Link to={`/brand/zara`}>
                 <p className="mt-2 mb-0">Zara</p>
               </Link>
@@ -271,19 +267,18 @@ const Dashboard = () => {
             <div className="shadow d-flex flex-column justify-content-center align-items-center"
               style={{ width: "150px", height: "100px" }}>
               <Link to={`/brand/Asos`}>
-                <p className="mt-2 mb-0">Asos </p>
+                <p className="mt-2 mb-0">Asos</p>
               </Link>
             </div>
             <div className="shadow d-flex flex-column justify-content-center align-items-center"
               style={{ width: "150px", height: "100px" }}>
-
               <Link to={`/brand/Prida`}>
                 <p className="mt-2 mb-0">Prida</p>
               </Link>
-
             </div>
           </div>
         </div>
+
 
         {/* Best Offers Section */}
         <h3 className="text-center mt-3">Best Offers So Far</h3>

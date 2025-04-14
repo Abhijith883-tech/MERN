@@ -8,31 +8,48 @@ const Footer = () => {
 
         {`
         .custom-ecart-heading {
-        display: flex;
-        align-items: center;
-        justify-content: flex-start;
+          display: flex;
+          align-items: center;
+          justify-content: flex-start;
       }
-        .inl {
-        display: inline-block; /* behaves like inline but keeps block features */
-        margin-right: 10px;    /* optional spacing between them */
+          .inl {
+          display: inline-block; /* behaves like inline but keeps block features */
+          margin-right: 10px;    /* optional spacing between them */
+          margin-left: 120px;
+      }
+          ul, ol {
+          padding-left: 0;
+          margin-left: 0; /* Optional: also removes indentation */
+      }
+          .list{
+          margin-left: 120px;
       }
 
         @media(max-width:769px){
-        .red-on-mobile {
-        color: red;
+          .red-on-mobile {
+          color: red;
       }
-        .custom-ecart-heading {
-        justify-content: center;
+          .custom-ecart-heading {
+          justify-content: center;
       }
-        .inl{
-        margin-left: 10px;
-        }
-          
+          .list{
+          margin-left: 10px;
+      }
+          .contact{
+          margin-left: -42px;
+      }
+          .contactInput{
+          margin-left: -140px;
+      }
+          .fontlink {
+          transform: translateX(-115px);
+      }
+
         }
         `}
       </style>
       <footer className="bg-gray-900 text-white py-10 px-6 md:px-12">
-        <div className='d-flex flex-wrap gap-10'>
+        <div className='d-flex flex-wrap'>
           {/* Intro */}
           <div>
             <h5 className="custom-ecart-heading">
@@ -49,16 +66,17 @@ const Footer = () => {
           </div>
 
           {/* Links */}
-          <div className='inl'>
-            <h5 className="text-lg font-semibold mb-2">Links</h5>
-            <ul className="space-y-2">
-              <li><Link to={'/men'} className="hover:text-gray-400">Men</Link></li>
-              <li><Link to={'/women'} className="hover:text-gray-400">Women</Link></li>
-              <li><Link to={'/kids'} className="hover:text-gray-400">Kids</Link></li>
+
+          <div className='list'>
+            <h5>Links</h5>
+            <ul>
+              <li><Link to={'/men'}>Men</Link></li>
+              <li><Link to={'/women'}>Women</Link></li>
+              <li><Link to={'/kids'}>Kids</Link></li>
             </ul>
           </div>
 
-        
+
 
           {/* Guides */}
           <div className='inl'>
@@ -72,15 +90,15 @@ const Footer = () => {
 
           {/* Contact */}
           <div className='ms-40'>
-            <h5 className="text-lg font-semibold mb-2">Contact</h5>
+            <h5 className="text-lg font-semibold mb-2 contact">Contact</h5>
             <div className="flex items-center gap-2">
-              <input className="w-full p-2 rounded bg-gray-800 text-white border border-gray-700" type="email" placeholder="Enter your email here" />
+              <input className="w-full p-2 rounded bg-gray-800 text-white border border-gray-700 contactInput" type="email" placeholder="Enter your email here" />
               <button className="bg-violet-600 hover:bg-violet-700 p-2 rounded text-white">
                 <i className="fa-solid fa-arrow-right"></i>
               </button>
             </div>
-            <div className="flex gap-4 mt-4">
-              <a href="#" className="hover:text-gray-400 text-xl"><i className="fa-brands fa-twitter"></i></a>
+            <div className="flex gap-4 mt-4 fontlink ">
+              <a href="#" className="hover:text-gray-400 text-xl "><i className="fa-brands fa-twitter"></i></a>
               <a href="#" className="hover:text-gray-400 text-xl"><i className="fa-brands fa-instagram"></i></a>
               <a href="#" className="hover:text-gray-400 text-xl"><i className="fa-brands fa-facebook"></i></a>
               <a href="#" className="hover:text-gray-400 text-xl"><i className="fa-brands fa-linkedin"></i></a>
