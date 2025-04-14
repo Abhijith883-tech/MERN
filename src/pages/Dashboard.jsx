@@ -104,21 +104,19 @@ const Dashboard = () => {
           <Carousel.Item>
             <Container
               fluid
-              className="min-vh-100 d-flex justify-content-between align-items-center p-4"
+              className="min-vh-100 d-flex justify-content-between align-items-center p-4 flex-column-reverse flex-lg-row"
               style={{
-                background: "linear-gradient(135deg, #0f2027, #203a43, #2c5364)", // Dark blue/teal gradient
+                background: "linear-gradient(135deg, #0f2027, #203a43, #2c5364)",
               }}
             >
               {/* Left: Text */}
-              <div className="d-flex flex-column justify-content-center align-items-center text-center w-50">
+              <div className="d-flex flex-column justify-content-center align-items-center text-center w-100 w-lg-50 mt-4 mt-lg-0">
                 <h1 className="text-white">
                   Elevate Your Style: <br /> Timeless Fashion for the Modern Man
-
-
                 </h1>
                 <Button
                   style={{
-                    backgroundColor: "#FFD700", // Golden Yellow
+                    backgroundColor: "#FFD700",
                     color: "#0f2027",
                     border: "none",
                     padding: "10px 20px",
@@ -138,11 +136,12 @@ const Dashboard = () => {
               </div>
 
               {/* Right: Image */}
-              <div>
+              <div className="w-100 w-lg-50 d-flex justify-content-center">
                 <img src={menfasion} alt="Men Fashion" className="img-fluid" />
               </div>
             </Container>
           </Carousel.Item>
+
 
           {/* Slide 2 */}
           <Carousel.Item>
@@ -221,7 +220,7 @@ const Dashboard = () => {
 
         <h3 className="text-center mt-3">Select By Category</h3>
         <div className="d-flex justify-content-center mt-3">
-          <div className='d-flex gap-3'>
+          <div className="d-flex flex-wrap gap-3 justify-content-center">
             <div className="shadow d-flex flex-column justify-content-center align-items-center"
               style={{ width: "150px", height: "100px" }}>
               <i className="fas fa-tshirt fa-3x"></i>
@@ -234,7 +233,7 @@ const Dashboard = () => {
             </div>
             <div className="shadow d-flex flex-column justify-content-center align-items-center"
               style={{ width: "150px", height: "100px" }}>
-              <div className="d-flex">
+              <div className="d-flex gap-2">
                 <i className="fa-solid fa-person fa-2x"></i>
                 <i className="fa-solid fa-person-dress fa-2x"></i>
               </div>
@@ -242,6 +241,7 @@ const Dashboard = () => {
             </div>
           </div>
         </div>
+
 
         <h3 className="text-center mt-3">Select By Category</h3>
         <div className="d-flex justify-content-center mt-3">
