@@ -6,6 +6,7 @@ import { Button, Carousel, Container } from 'react-bootstrap'
 import Header from '../components/Header'
 import { FaArrowRight } from "react-icons/fa";
 import carosal from '../assets/carosal.jpg'
+import siblings from '../assets/siblings.jpg'
 import { addToCartAPI, addToCartSpecialAPI, getSpecialAPI } from '../services/allAPI'
 import { Link } from 'react-router-dom'
 
@@ -97,6 +98,48 @@ const Dashboard = () => {
   return (
     <>
       <div>
+        <style>
+          {`
+          .price {
+  font-size: 24px; /* Default size */
+}
+          
+          @media(max-width:769px){
+
+          .custom-card {
+           margin:0;
+           width: 140px !important;
+           height: 250px !important; 
+            margin-left: 10px;
+         }
+
+            .offermain{
+              margin-left: 10px !important;
+
+            }
+
+            .imgBest{
+              width: 20%;
+              height:130px;
+            }
+              h3 {
+              font-size: 16px; /* Adjust as needed */
+            }
+              p{
+              font-size: 16px; /* Adjust as needed */
+            }
+              .price {
+            font-size: 16px; /* Mobile size */
+          }
+            .buttonStyle{
+            width: 100%;
+            height:100px;
+            }
+        
+          
+        }
+        `}
+        </style>
         <Header />
         <Carousel interval={3000} indicators={false}> {/* Auto-slide every 3s */}
           {/* Slide 1 */}
@@ -296,47 +339,184 @@ const Dashboard = () => {
 
         {/* Best Offers Section */}
         <h3 className="text-center mt-3">Best Offers So Far</h3>
-        <div className='ml-36 d-flex flex-wrap gap-3'>
+        <div className=' d-flex flex-wrap gap-3 offermain' style={{ marginLeft: '100px' }}>
 
-          {
-            products.length > 0 ? (
-              products.map((product, index) => (
-                <div className="bg-white text-dark p-3 rounded shadow position-relative" style={{ width: "300px", margin: "50px auto" }}>
-                  {/* Discount Badge */}
-                  <div
-                    className="position-absolute bg-danger text-white rounded-circle text-center d-flex align-items-center justify-content-center"
-                    style={{
-                      width: "45px",
-                      height: "45px",
-                      fontSize: "14px",
-                      fontWeight: "bold",
-                      top: "10px",
-                      left: "10px",
-                    }} key={product._id}
-                  >
-                    {product.discount}% OFF
-                  </div>
-                  {/* Image */}
-                  <img src={product.mainImage} style={{ width: "100%" }} alt="Offer" />
 
-                  {/* Product Details */}
-                  <div>
-                    <h3>{product.name}</h3>
-                    <div className="d-flex justify-content-between">
-                      <p className="mb-0">{product.gender}</p>
-                      <p className="mb-0">{product.brand}</p>
-                    </div>
-                    <h5><span><s style={{ textDecorationColor: "red" }}>${product.price}</s></span>${product.specialPrice}</h5>
-                  </div>
-                  <div className='d-flex justify-content-center align-items-center'>
-                    <Button onClick={() => addToCart(index)} className='bg-black text-white border-0'>Add to cart</Button>
-                  </div>
-                </div>
-              ))
-            ) : (
-              <p>No top trending products found.</p>
-            )
-          }
+
+          <div
+            className="custom-card  bg-white text-dark p-3 rounded shadow position-relative"
+            style={{ width: "300px", marginLeft: "20px" }}
+          >
+            {/* Discount Badge */}
+            <div
+              className="position-absolute bg-danger text-white rounded-circle text-center d-flex align-items-center justify-content-center"
+              style={{
+                width: "45px",
+                height: "45px",
+                fontSize: "14px",
+                fontWeight: "bold",
+                top: "10px",
+                left: "10px",
+              }}
+            >
+              20% OFF
+            </div>
+            {/* Image */}
+            <img className='imgBest' src={siblings} style={{ width: "100%" }} alt="Offer" />
+
+            {/* Product Details */}
+            <div>
+              <h3>dfghjj</h3>
+              <div className="d-flex justify-content-between">
+                <p className="mb-0">Male</p>
+                <p className="mb-0">nike</p>
+              </div>
+              <h5 className="price">
+  <span><s style={{ textDecorationColor: "red" }}>$120</s></span>$125
+</h5>
+            </div>
+            <div className='d-flex justify-content-center align-items-center'>
+              <Button onClick={() => addToCart(index)} className=' buttonStyle bg-black text-white border-0'>Add to cart</Button>
+            </div>
+          </div>
+          <div
+            className="custom-card offerBest bg-white text-dark p-3 rounded shadow position-relative"
+            style={{ width: "300px", marginLeft: "20px" }}
+          >
+            {/* Discount Badge */}
+            <div
+              className="position-absolute bg-danger text-white rounded-circle text-center d-flex align-items-center justify-content-center"
+              style={{
+                width: "45px",
+                height: "45px",
+                fontSize: "14px",
+                fontWeight: "bold",
+                top: "10px",
+                left: "10px",
+              }}
+            >
+              20% OFF
+            </div>
+            {/* Image */}
+            <img src={siblings} style={{ width: "100%" }} alt="Offer" />
+
+            {/* Product Details */}
+            <div>
+              <h3>dfghjj</h3>
+              <div className="d-flex justify-content-between">
+                <p className="mb-0">Male</p>
+                <p className="mb-0">nike</p>
+              </div>
+              <h5><span><s style={{ textDecorationColor: "red" }}>$120</s></span>$125</h5>
+            </div>
+            <div className='d-flex justify-content-center align-items-center'>
+              <Button onClick={() => addToCart(index)} className='bg-black text-white border-0'>Add to cart</Button>
+            </div>
+          </div>
+          <div
+            className="custom-card offerBest bg-white text-dark p-3 rounded shadow position-relative"
+            style={{ width: "300px", marginLeft: "20px" }}
+          >
+            {/* Discount Badge */}
+            <div
+              className="position-absolute bg-danger text-white rounded-circle text-center d-flex align-items-center justify-content-center"
+              style={{
+                width: "45px",
+                height: "45px",
+                fontSize: "14px",
+                fontWeight: "bold",
+                top: "10px",
+                left: "10px",
+              }}
+            >
+              20% OFF
+            </div>
+            {/* Image */}
+            <img src={siblings} style={{ width: "100%" }} alt="Offer" />
+
+            {/* Product Details */}
+            <div>
+              <h3>dfghjj</h3>
+              <div className="d-flex justify-content-between">
+                <p className="mb-0">Male</p>
+                <p className="mb-0">nike</p>
+              </div>
+              <h5><span><s style={{ textDecorationColor: "red" }}>$120</s></span>$125</h5>
+            </div>
+            <div className='d-flex justify-content-center align-items-center'>
+              <Button onClick={() => addToCart(index)} className='bg-black text-white border-0'>Add to cart</Button>
+            </div>
+          </div>
+          <div
+            className="custom-card offerBest bg-white text-dark p-3 rounded shadow position-relative"
+            style={{ width: "300px", marginLeft: "20px" }}
+          >
+            {/* Discount Badge */}
+            <div
+              className="position-absolute bg-danger text-white rounded-circle text-center d-flex align-items-center justify-content-center"
+              style={{
+                width: "45px",
+                height: "45px",
+                fontSize: "14px",
+                fontWeight: "bold",
+                top: "10px",
+                left: "10px",
+              }}
+            >
+              20% OFF
+            </div>
+            {/* Image */}
+            <img src={siblings} style={{ width: "100%" }} alt="Offer" />
+
+            {/* Product Details */}
+            <div>
+              <h3>dfghjj</h3>
+              <div className="d-flex justify-content-between">
+                <p className="mb-0">Male</p>
+                <p className="mb-0">nike</p>
+              </div>
+              <h5><span><s style={{ textDecorationColor: "red" }}>$120</s></span>$125</h5>
+            </div>
+            <div className='d-flex justify-content-center align-items-center'>
+              <Button onClick={() => addToCart(index)} className='bg-black text-white border-0'>Add to cart</Button>
+            </div>
+          </div>
+          <div
+            className="custom-card offerBest bg-white text-dark p-3 rounded shadow position-relative"
+            style={{ width: "300px", marginLeft: "20px" }}
+          >
+            {/* Discount Badge */}
+            <div
+              className="position-absolute bg-danger text-white rounded-circle text-center d-flex align-items-center justify-content-center"
+              style={{
+                width: "45px",
+                height: "45px",
+                fontSize: "14px",
+                fontWeight: "bold",
+                top: "10px",
+                left: "10px",
+              }}
+            >
+              20% OFF
+            </div>
+            {/* Image */}
+            <img src={siblings} style={{ width: "100%" }} alt="Offer" />
+
+            {/* Product Details */}
+            <div>
+              <h3>dfghjj</h3>
+              <div className="d-flex justify-content-between">
+                <p className="mb-0">Male</p>
+                <p className="mb-0">nike</p>
+              </div>
+              <h5><span><s style={{ textDecorationColor: "red" }}>$120</s></span>$125</h5>
+            </div>
+            <div className='d-flex justify-content-center align-items-center'>
+              <Button onClick={() => addToCart(index)} className='bg-black text-white border-0'>Add to cart</Button>
+            </div>
+          </div>
+          
+
 
 
 
