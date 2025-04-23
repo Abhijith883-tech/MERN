@@ -42,8 +42,8 @@ const TopTrendMen = ({ product }) => {
         <>
             <div>
 
-            <style>
-          {`
+                <style>
+                    {`
     
           
           @media(max-width:769px){
@@ -57,20 +57,20 @@ const TopTrendMen = ({ product }) => {
           
         }
         `}
-        </style>
+                </style>
 
 
                 {
                     product.stock > 0 ?
-                        <div style={{ Height: '400px', width: '400px', marginTop: '50px', marginLeft: '80px' }} className="bg-white text-dark p-3 rounded shadow">
+                        <div style={{ Height: '400px', width: '400px', marginTop: '50px', marginLeft: '80px' }} className="custom-card bg-white text-dark p-3 rounded shadow">
                             <div>
                                 <img src={product?.mainImage} style={{ width: '100%' }} onClick={handleShow} alt="" srcset="" />
                             </div>
                             <div>
                                 <h3>{product.name}</h3>
                                 <div className='d-flex justify-content-between'>
-                                    <p className='mb-0'>{product?.gender}</p>
-                                    <p className='mb-0'>{product?.brand}</p>
+                                <p className='mb-0'>{product?.gender}</p>
+                                <p className='mb-0'>{product?.brand}</p>
                                 </div>
                                 <h5>${product?.price}</h5>
                             </div>
@@ -92,7 +92,7 @@ const TopTrendMen = ({ product }) => {
                                 <h5>${product?.price}</h5>
                             </div>
                             <div className='d-flex justify-content-center align-items-center'>
-                            <p className="text-danger">Out of stock</p>
+                                <p className="text-danger">Out of stock</p>
                             </div>
                         </div>
                 }
@@ -116,6 +116,8 @@ const TopTrendMen = ({ product }) => {
                 </div> */}
 
             </div>
+
+           
 
 
 
