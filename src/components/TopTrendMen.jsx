@@ -4,6 +4,7 @@ import { Button } from 'react-bootstrap'
 import { useState } from 'react';
 import Modal from 'react-bootstrap/Modal';
 import StarMen from './StarMen';
+import siblings from '../assets/siblings.jpg'
 import { addToCartAPI } from '../services/allAPI';
 const TopTrendMen = ({ product }) => {
     const userId = sessionStorage.getItem("user");
@@ -40,6 +41,25 @@ const TopTrendMen = ({ product }) => {
     return (
         <>
             <div>
+
+            <style>
+          {`
+    
+          
+          @media(max-width:769px){
+
+        div.custom-card{
+           margin:0;
+           width: 250px !important;
+           height: 420px !important; 
+           margin-left: 53px !important;
+        }
+          
+        }
+        `}
+        </style>
+
+
                 {
                     product.stock > 0 ?
                         <div style={{ Height: '400px', width: '400px', marginTop: '50px', marginLeft: '80px' }} className="bg-white text-dark p-3 rounded shadow">
@@ -76,7 +96,46 @@ const TopTrendMen = ({ product }) => {
                             </div>
                         </div>
                 }
+
+
+                {/* <div style={{ Height: '400px', width: '400px', marginTop: '50px', marginLeft: '80px' }} className="custom-card bg-white text-dark p-3 rounded shadow">
+                    <div>
+                        <img src={siblings} style={{ width: '100%' }} onClick={handleShow} alt="" srcset="" />
+                    </div>
+                    <div>
+                        <h3>name</h3>
+                        <div className='d-flex justify-content-between'>
+                            <p className='mb-0'>Male</p>
+                            <p className='mb-0'>Nike</p>
+                        </div>
+                        <h5>$125</h5>
+                    </div>
+                    <div className='d-flex justify-content-center align-items-center'>
+                        <Button onClick={addToCart} className='bg-black text-white border-0'>Add to cart</Button>
+                    </div>
+                </div> */}
+
             </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
             {/* <Modal show={show} onHide={handleClose}>
                 <Modal.Header >
                     <Modal.Title>

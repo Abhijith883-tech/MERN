@@ -51,10 +51,67 @@ const Men = () => {
 
   return (
     <>
+      <style>
+        {`
+            .carousel-image-container {
+              width: 100%;
+              height: 500px;
+              overflow: hidden;
+            }
+            .TopBrandsCollection {
+              margin-left: 80px;
+              margin-top: 50px;
+            }
+            .TopBrandsCollectionLine{
+              width: 315px;
+              height: 10px;
+              margin-left: 80px;
+            }
+              .TopBrandsCollection {
+  margin-left: 80px;
+  margin-top: 50px;
+}
+  .TopBrandsCollectionLine {
+  width: 315px;
+  height: 10px;
+  margin-left: 80px;
+}
+          
+          @media(max-width:769px){
+          .offermain{
+            margin-left: 10px !important;
+          }
+          .carousel-image-container {
+            height:250px; /* Increase height for smaller screens */
+          }
+          .TopBrandsCollection {
+            margin-left: 45px;
+            margin-top: -25px;
+          }
+          .TopBrandsCollectionLine{
+            margin-left: 45px;
+            margin-top: -99px;
+            width: 400px;
+          }
+            .ChooseAnItem{
+            margin-top:20px;
+            margin-right: 55px;
+            }
+            .TopBrandsCollection {
+              margin-left: 20px;
+              margin-top: 20px;
+            }
+              .TopBrandsCollectionLine {
+              margin-right: 20px;
+            }
+                    
+        }
+        `}
+      </style>
       <Header />
       <Carousel>
         <Carousel.Item>
-          <div style={{ width: '100%', height: '500px', overflow: 'hidden' }}>
+          <div className="carousel-image-container">
             <img className="d-block w-100" src="https://wallpaperaccess.com/full/1448061.jpg" alt="First slide" />
           </div>
           <Carousel.Caption>
@@ -64,7 +121,7 @@ const Men = () => {
         </Carousel.Item>
 
         <Carousel.Item>
-          <div style={{ width: '100%', height: '500px', overflow: 'hidden' }}>
+          <div className="carousel-image-container">
             <img className="d-block w-100" src="https://wallpaperaccess.com/full/1448061.jpg" alt="Second slide" />
           </div>
           <Carousel.Caption>
@@ -74,7 +131,7 @@ const Men = () => {
         </Carousel.Item>
 
         <Carousel.Item>
-          <div style={{ width: '100%', height: '500px', overflow: 'hidden' }}>
+          <div className="carousel-image-container">
             <img className="d-block w-100" src="https://wallpaperaccess.com/full/1448061.jpg" alt="Third slide" />
           </div>
           <Carousel.Caption>
@@ -84,14 +141,14 @@ const Men = () => {
         </Carousel.Item>
       </Carousel>
 
-      <h2 style={{ marginLeft: '80px', marginTop: '50px' }}>Top Brands Collection</h2>
-      <div className='d-flex justify-content-between align-items-center p-3'>
-        <div style={{ marginLeft: '80px', backgroundColor: 'red', width: '315px', height: '10px', borderRadius: '10px' }}>
-        </div>
+      <h2 className="TopBrandsCollection">Top Brands Collection</h2>
 
-        <div>
+      <div className='d-flex justify-content-between align-items-center p-3'>
+        <div style={{ backgroundColor: 'red', borderRadius: '10px' }} className='TopBrandsCollectionLine'></div>
+
+        <div >
           <label htmlFor="items">Choose an item: </label>
-          <select name="category" id="category" value={selectedCategory} onChange={handleCategoryChange}>
+          <select className='ChooseAnItem' name="category" id="category" value={selectedCategory} onChange={handleCategoryChange}>
             <option value="">All</option>
             <option value="Shirt">Shirt</option>
             <option value="Pant">Pant</option>
@@ -100,7 +157,8 @@ const Men = () => {
         </div>
       </div>
 
-      <div className='d-flex flex-wrap'>
+
+      <div className=' offermain d-flex flex-wrap'>
         {filteredTopTrendProducts.length > 0 ? (
           filteredTopTrendProducts.map((product) => (
             <TopTrendMen key={product._id} product={product} />
@@ -108,6 +166,12 @@ const Men = () => {
         ) : (
           <p>No top trending products found.</p>
         )}
+        {/* <TopTrendMen />
+        <TopTrendMen />
+        <TopTrendMen />
+        <TopTrendMen />
+        <TopTrendMen />
+        <TopTrendMen /> */}
       </div>
 
       <h2 style={{ marginLeft: '60px', marginTop: '50px' }}>Trending Collection</h2>
