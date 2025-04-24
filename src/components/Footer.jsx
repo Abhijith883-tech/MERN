@@ -24,8 +24,11 @@ const Footer = () => {
           .list{
           margin-left: 120px;
       }
+          .full{
+          margin-left: 225px;
+          }
 
-        @media(max-width:769px){
+        @media(max-width:600px){
           .red-on-mobile {
           color: red;
       }
@@ -36,14 +39,17 @@ const Footer = () => {
           margin-left: -5px;
       }
           .contact{
-          margin-left: -42px;
+          margin-left: -5px;
       }
           .contactInput{
           margin-left: -140px;
       }
           .fontlink {
-          transform: translateX(-115px);
+          transform: translateX(-50px);
       }
+          .full{
+          margin-left: 86px;
+          }
 
         }
         `}
@@ -89,7 +95,8 @@ const Footer = () => {
           </div>
 
           {/* Contact */}
-          <div className='ms-40'>
+          {/* <div className='ms-40'> */}
+          <div className='full'>
             <h5 className="text-lg font-semibold mb-2 contact">Contact</h5>
             <div className="flex items-center gap-2">
               <input className="w-full p-2 rounded bg-gray-800 text-white border border-gray-700 contactInput" type="email" placeholder="Enter your email here" />

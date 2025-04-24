@@ -54,7 +54,7 @@ const Home = () => {
                 <div className="container">
                     <div className="row align-items-center">
                         <div className="col-lg-6">
-                            <h1 style={{ fontSize: '80px' }}>E Commerce</h1>
+                            {/* <h1 style={{ fontSize: '80px' }}>E Commerce</h1> */}
                             <p style={{ textAlign: 'justify' }}>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nulla, rerum similique minima doloribus nisi dolor ipsum a cumque expedita minus asperiores iste distinctio. Molestiae, quod laboriosam. Itaque sunt quibusdam sapiente.</p>
 
                             {/* Show button only if the user is logged in */}

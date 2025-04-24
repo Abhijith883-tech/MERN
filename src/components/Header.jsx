@@ -43,9 +43,12 @@ const Header = ({ insideLogin, Login }) => {
 
     <div className="text-white p-3 d-flex justify-content-between align-items-center" style={{ backgroundColor: '#343a40' }}>
       <style>
-        {`@media(min-width:769px){
+        {`@media(min-width:600px){
         .menu-toggle{
         display:none;
+        }
+        @media(max-width:600px){
+        
         }
           
         }
@@ -70,19 +73,19 @@ const Header = ({ insideLogin, Login }) => {
       }
       {/* Mobile links (shown when menu-toggle is clicked) */}
       {
-  showMobileMenu && (
-    <div className="d-md-none mt-2">
-      <div className="d-flex justify-content-start align-items-center gap-3">
-        <Link to="/men" className="text-white">Men</Link>
-        <Link to="/women" className="text-white">Women</Link>
-        <Link to="/kids" className="text-white">Kids</Link>
-        <Link to="/cart">
-          <i style={{ color: 'white' }} className="fa-solid fa-cart-plus fa-lg"></i>
-        </Link>
-      </div>
-    </div>
-  )
-}
+        showMobileMenu && (
+          <div className="d-md-none mt-2">
+            <div className="d-flex justify-content-start align-items-center gap-3">
+              <Link to="/men" className="text-white">Men</Link>
+              <Link to="/women" className="text-white">Women</Link>
+              <Link to="/kids" className="text-white">Kids</Link>
+              <Link to="/cart">
+                <i style={{ color: 'white' }} className="fa-solid fa-cart-plus fa-lg"></i>
+              </Link>
+            </div>
+          </div>
+        )
+      }
 
 
       <div className="d-flex align-items-center">

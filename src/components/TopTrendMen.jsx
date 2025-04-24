@@ -48,12 +48,12 @@ const TopTrendMen = ({ product }) => {
           
           @media(max-width:769px){
 
-        div.custom-card{
-           margin:0;
-           width: 250px !important;
-           height: 420px !important; 
-           margin-left: 53px !important;
-        }
+            div.custom-card{
+            margin:0;
+            width: 250px !important;
+            height: 420px !important; 
+            margin-left: 53px !important;
+            }
           
         }
         `}
